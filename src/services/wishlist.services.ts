@@ -3,6 +3,7 @@ import { getUserToken } from "../lib/auth"
 
 export async function addToWishlist(productId: string) {
     const token = await getUserToken()
+    console.log("Wishlist Action - Token:", token ? "Present" : "Missing");
     if (!token) {
         throw new Error("Unauthorized")
     }
@@ -15,6 +16,7 @@ export async function addToWishlist(productId: string) {
         }
     })
     const data = await response.json()
+    console.log("Wishlist API Response:", data);
     return data
 }
 

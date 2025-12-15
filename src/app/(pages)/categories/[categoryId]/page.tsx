@@ -16,8 +16,8 @@ import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import { SubCategory } from '@/interfaces/Category'
 
-export default async function CategoryDetailsPage({ params }: { params: { categoryId: string } }) {
-    const { categoryId } = params
+export default async function CategoryDetailsPage({ params }: { params: Promise<{ categoryId: string }> }) {
+    const { categoryId } = await params
 
     // Fetch data in parallel
     const categoryData = getSpecificCategory(categoryId)

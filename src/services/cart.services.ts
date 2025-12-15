@@ -3,6 +3,7 @@ import { getUserToken } from "../lib/auth"
 
 export async function addToCart(productId: string) {
     const token = await getUserToken()
+    console.log("AddToCart Action - Token:", token ? "Present" : "Missing");
     if (!token) {
         throw new Error("Unauthorized")
     }
@@ -16,6 +17,7 @@ export async function addToCart(productId: string) {
         }
     })
     const data = await response.json()
+    console.log("AddToCart API Response:", data);
     return data
 }
 
