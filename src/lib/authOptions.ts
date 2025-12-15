@@ -6,6 +6,10 @@ export const authOptions: NextAuthOptions = {
     pages: {
         signIn: "/login"
     },
+    session: {
+        strategy: "jwt",
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+    },
     providers: [
         Credentials({
             name: "Credentials",
@@ -48,6 +52,7 @@ export const authOptions: NextAuthOptions = {
         async session({ session, token }) {
             if (token) {
                 session.user = token.user
+                session.token = token.token
             }
             return session
         }
