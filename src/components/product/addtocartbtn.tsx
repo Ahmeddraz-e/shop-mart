@@ -17,10 +17,10 @@ export default function AddToCartBtn({ productId, price }: { productId: string, 
     async function addProductToCart(productId: string) {
         setIsLoading(true)
         try {
-            const response = await addToCart(productId)
+            await addToCart(productId)
             toast.success("Product added to cart", { position: "top-center", duration: 3000 })
             updateCartCount()
-            
+
         } catch (error) {
             console.error("Failed to add to cart:", error)
             toast.error("Failed to add to cart", { position: "top-center", duration: 3000 })
