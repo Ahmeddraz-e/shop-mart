@@ -5,7 +5,7 @@ export async function addToCart(productId: string) {
     const token = await getUserToken()
     console.log("AddToCart Action - Token:", token ? "Present" : "Missing");
     if (!token) {
-        throw new Error("Unauthorized")
+        return { status: "fail", message: "Unauthorized" }
     }
     const response = await fetch("https://ecommerce.routemisr.com/api/v1/cart", {
         method: "POST",
@@ -40,7 +40,7 @@ export async function getCart() {
 export async function deleteItem(productId: string) {
     const token = await getUserToken()
     if (!token) {
-        throw new Error("Unauthorized")
+        return { status: "fail", message: "Unauthorized" }
     }
     const response = await fetch(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`, {
         method: "DELETE",
@@ -56,7 +56,7 @@ export async function deleteItem(productId: string) {
 export async function updateItemCount(productId: string, count: number) {
     const token = await getUserToken()
     if (!token) {
-        throw new Error("Unauthorized")
+        return { status: "fail", message: "Unauthorized" }
     }
     const response = await fetch(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`, {
         method: "PUT",
@@ -73,7 +73,7 @@ export async function updateItemCount(productId: string, count: number) {
 export async function clearCart() {
     const token = await getUserToken()
     if (!token) {
-        throw new Error("Unauthorized")
+        return { status: "fail", message: "Unauthorized" }
     }
     const response = await fetch("https://ecommerce.routemisr.com/api/v1/cart", {
         method: "DELETE",

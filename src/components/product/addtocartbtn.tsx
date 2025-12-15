@@ -17,7 +17,14 @@ export default function AddToCartBtn({ productId, price }: { productId: string, 
     async function addProductToCart(productId: string) {
         setIsLoading(true)
         try {
-            await addToCart(productId)
+            const response = await addToCart(productId)
+            if (response.status === 'fail' && response.message === 'Unauthorized') {
+                toast.error("Please login to add items to cart", { position: "top-center", duration: 3000 })
+                return;
+            }
+            if (response.status === 'fail') {
+                throw new Error(response.message);
+            }
             toast.success("Product added to cart", { position: "top-center", duration: 3000 })
             updateCartCount()
 

@@ -5,7 +5,7 @@ export async function addToWishlist(productId: string) {
     const token = await getUserToken()
     console.log("Wishlist Action - Token:", token ? "Present" : "Missing");
     if (!token) {
-        throw new Error("Unauthorized")
+        return { status: "fail", message: "Unauthorized" }
     }
     const response = await fetch("https://ecommerce.routemisr.com/api/v1/wishlist", {
         method: "POST",
@@ -23,7 +23,7 @@ export async function addToWishlist(productId: string) {
 export async function removeFromWishlist(productId: string) {
     const token = await getUserToken()
     if (!token) {
-        throw new Error("Unauthorized")
+        return { status: "fail", message: "Unauthorized" }
     }
     const response = await fetch(`https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`, {
         method: "DELETE",

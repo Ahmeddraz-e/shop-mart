@@ -74,6 +74,9 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
                 if (response.status === 'success') {
                     toast.success("Added to wishlist")
                     if (response.data) setWishlist(response.data)
+                } else if (response.status === 'fail' && response.message === 'Unauthorized') {
+                    setWishlist(prev => prev.filter(id => id !== productId))
+                    toast.error("Please login to add to wishlist")
                 } else {
                     setWishlist(prev => prev.filter(id => id !== productId))
                     toast.error("Failed to add to wishlist")
