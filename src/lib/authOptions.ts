@@ -22,10 +22,10 @@ export const authOptions: NextAuthOptions = {
                     method: "POST"
                 })
                 const data = await response.json()
-               
+
                 if (data.message === "success") {
-                    const decodedToken : {id : string} = jwtDecode(data.token);
-                    
+                    const decodedToken: { id: string } = jwtDecode(data.token);
+
                     return {
                         id: decodedToken.id,
                         user: data.user,
@@ -37,20 +37,21 @@ export const authOptions: NextAuthOptions = {
             }
         })
     ],
-    callbacks:{
-        async jwt ({token, user}){
-            if(user){
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
                 token.user = user.user
                 token.token = user.token
             }
             return token
         },
-        async session({session, token}){
-            if(token){
+        async session({ session, token }) {
+            if (token) {
                 session.user = token.user
             }
             return session
         }
-    } 
+    },
+    secret: process.env.NEXTAUTH_SECRET
 }
 
