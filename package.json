@@ -19,6 +19,7 @@
     "@vercel/speed-insights": "^1.3.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.555.0",
@@ -30,6 +31,7 @@
     "react-hook-form": "^7.67.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^4.1.13"
   },
   "devDependencies": {

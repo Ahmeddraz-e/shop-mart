@@ -152,7 +152,7 @@ export default function CartPage() {
                     size="sm"
                     onClick={handleClearCart}
                     disabled={isClearing}
-                    className="text-red-500 hover:text-red-600 hover:bg-red-50 border-red-200"
+                    className="text-destructive hover:text-destructive hover:bg-destructive/10 border-destructive/20"
                 >
                     {isClearing ? (
                         <Loader2 className="w-4 h-4 animate-spin mr-2" />
@@ -169,10 +169,10 @@ export default function CartPage() {
                     {cart.products.map((item) => (
                         <div
                             key={item._id}
-                            className="group flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-6 bg-white border rounded-2xl hover:shadow-md transition-shadow duration-300 relative overflow-hidden"
+                            className="group flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-6 bg-card border border-border rounded-2xl hover:shadow-md transition-shadow duration-300 relative overflow-hidden"
                         >
                             {/* Product Image */}
-                            <div className="relative w-full sm:w-32 aspect-[4/3] sm:aspect-square rounded-xl overflow-hidden bg-gray-100 shrink-0">
+                            <div className="relative w-full sm:w-32 aspect-4/3 sm:aspect-square rounded-xl overflow-hidden bg-white shrink-0">
                                 <Image
                                     src={item.product.imageCover}
                                     alt={item.product.title}
@@ -199,11 +199,11 @@ export default function CartPage() {
 
                                 <div className="flex flex-wrap items-center justify-between gap-4">
                                     {/* Quantity Controls */}
-                                    <div className="flex items-center gap-3 bg-gray-50 rounded-full px-1 border">
+                                    <div className="flex items-center gap-3 bg-muted rounded-full px-1 border border-border">
                                         <button
                                             onClick={() => handleUpdateQuantity(item.product._id, item.count - 1)}
                                             disabled={item.count <= 1 || isUpdating === item.product._id}
-                                            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white text-gray-600 disabled:opacity-50 transition-colors"
+                                            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-card text-muted-foreground disabled:opacity-50 transition-colors"
                                         >
                                             <Minus className="w-4 h-4" />
                                         </button>
@@ -217,7 +217,7 @@ export default function CartPage() {
                                         <button
                                             onClick={() => handleUpdateQuantity(item.product._id, item.count + 1)}
                                             disabled={isUpdating === item.product._id}
-                                            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white text-gray-600 transition-colors"
+                                            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-card text-muted-foreground transition-colors"
                                         >
                                             <Plus className="w-4 h-4" />
                                         </button>
@@ -227,7 +227,7 @@ export default function CartPage() {
                                     <button
                                         onClick={() => handleRemoveItem(item.product._id)}
                                         disabled={isUpdating === item.product._id}
-                                        className="text-sm font-medium text-red-500 hover:text-red-600 flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
+                                        className="text-sm font-medium text-destructive hover:text-destructive flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-destructive/10 transition-colors"
                                     >
                                         <Trash2 className="w-4 h-4" />
                                         Remove
@@ -240,7 +240,7 @@ export default function CartPage() {
 
                 {/* Order Summary */}
                 <div className="lg:w-80 xl:w-96 shrink-0 h-fit space-y-4">
-                    <div className="bg-gray-50 p-6 rounded-2xl border space-y-4">
+                    <div className="bg-card p-6 rounded-2xl border border-border space-y-4 shadow-sm">
                         <h2 className="font-bold text-lg">Order Summary</h2>
                         <div className="space-y-3 pt-2 text-sm">
                             <div className="flex justify-between text-muted-foreground">
@@ -257,15 +257,15 @@ export default function CartPage() {
                             </div>
                         </div>
                         <Link href="/checkout">
-                            <Button size="lg" className="w-full rounded-xl bg-black text-white hover:bg-black/80 font-semibold mt-4 shadow-lg shadow-primary/20">
+                            <Button size="lg" className="w-full rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 font-semibold mt-4 shadow-lg shadow-primary/20">
                                 Checkout
                                 <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                         </Link>
                     </div>
 
-                    <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 flex gap-3 text-sm text-blue-700">
-                        <div className="p-1 px-1.5 h-fit bg-white rounded-md shadow-sm border border-blue-100 font-bold shrink-0">
+                    <div className="bg-blue-50/50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-100 dark:border-blue-800 flex gap-3 text-sm text-blue-700 dark:text-blue-300">
+                        <div className="p-1 px-1.5 h-fit bg-white dark:bg-blue-900/40 rounded-md shadow-sm border border-blue-100 dark:border-blue-800 font-bold shrink-0">
                             Note
                         </div>
                         <p>Prices and shipping costs are confirmed at checkout.</p>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/ui/common/navbar";
 import Footer from "@/components/ui/common/footer";
 import AuthProvider from "@/providers/auth-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { CartProvider } from "@/providers/cart-provider";
 import { Toaster } from "sonner";
 
@@ -25,20 +26,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <WishlistProvider>
-            <CartProvider>
-              <Navbar />
-              {children}
-              <Toaster richColors />
-              <Footer />
-            </CartProvider>
-          </WishlistProvider>
-        </AuthProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <WishlistProvider>
+              <CartProvider>
+                <Navbar />
+                {children}
+                <Toaster richColors />
+                <Footer />
+              </CartProvider>
+            </WishlistProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

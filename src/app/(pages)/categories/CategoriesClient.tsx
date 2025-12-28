@@ -60,9 +60,9 @@ export default function CategoriesClient({ initialCategories }: CategoriesClient
                             href={`/categories/${category._id}`}
                             className="group block"
                         >
-                            <Card className="h-full border-0 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden rounded-2xl">
+                            <Card className="h-full border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden rounded-2xl">
                                 <CardContent className="p-0">
-                                    <div className="relative aspect-square bg-gray-50 p-8 flex items-center justify-center overflow-hidden">
+                                    <div className="relative aspect-square bg-white p-8 flex items-center justify-center overflow-hidden">
                                         <Image
                                             src={category.image}
                                             alt={category.name}
@@ -72,7 +72,7 @@ export default function CategoriesClient({ initialCategories }: CategoriesClient
                                         />
                                     </div>
                                     <div className="p-4 text-center">
-                                        <h3 className="font-semibold text-gray-800 group-hover:text-black transition-colors text-lg">
+                                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors text-lg">
                                             {category.name}
                                         </h3>
                                     </div>

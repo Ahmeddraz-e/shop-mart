@@ -1,56 +1,67 @@
-import React from 'react'
-import { ProductI } from '@/interfaces/product'
+import React from "react";
+import { ProductI } from "@/interfaces/product";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-import Image from 'next/image'
-import Link from 'next/link'
-import Star from '@/components/ui/star'
-import AddToCartBtn from '@/components/product/addtocartbtn'
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Image from "next/image";
+import Link from "next/link";
+import Star from "@/components/ui/star";
+import AddToCartBtn from "@/components/product/addtocartbtn";
 
 interface ProductCardProps {
-    product: ProductI;
+  product: ProductI;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-    return (
-        <Card className="h-full flex flex-col overflow-hidden border-0 shadow-sm hover:shadow-lg transition-shadow">
-            <Link href={`/products/${product._id}`} >
-                <div className="relative h-[45vh] w-full">
-                    <Image
-                        fill
-                        src={product.imageCover}
-                        alt={product.title}
-                        className='object-cover h-[45vh] w-full'
-                    />
-                </div>
-                <CardHeader>
-                    <h4 className='card-brand text-sm font-semibold text-gray-500'>{product.brand.name}</h4>
-                    <CardTitle className='text-xl font-bold line-clamp-1' title={product.title}>{product.title}</CardTitle>
-                    <CardDescription className='text-sm font-semibold text-gray-500'>{product.category.name}</CardDescription>
-                </CardHeader>
-                <CardContent className='flex items-center gap-2 mt-auto'>
-                    <div className="flex gap-0.5">
-                        {Array.from({ length: 5 }).map((_, index) => {
-                            const rating = product.ratingsAverage;
-                            const fillValue = Math.max(0, Math.min(1, rating - index));
-                            return (
-                                <Star
-                                    key={index}
-                                    percentage={fillValue * 100}
-                                    className="text-yellow-500 fill-yellow-400"
-                                />
-                            )
-                        })}
-                    </div>
-                    <span className='text-sm font-semibold text-gray-600'>({product.ratingsQuantity} reviews)</span>
-                </CardContent>
-            </Link>
-            <AddToCartBtn productId={product._id} price={product.price} />
-        </Card>
-    )
+  return (
+    <Card className="h-full flex flex-col overflow-hidden border-0 shadow-md hover:shadow-xl transition-shadow">
+      <Link href={`/products/${product._id}`}>
+        <div className="relative h-[45vh] w-full bg-white flex items-center justify-center">
+          <Image
+            fill
+            src={product.imageCover}
+            alt={product.title}
+            className="object-cover h-[45vh] w-full"
+          />
+        </div>
+        <CardHeader>
+          <h4 className="card-brand text-sm font-semibold text-muted-foreground">
+            {product.brand.name}
+          </h4>
+          <CardTitle
+            className="text-xl font-bold line-clamp-1"
+            title={product.title}
+          >
+            {product.title}
+          </CardTitle>
+          <CardDescription className="text-sm font-semibold text-muted-foreground">
+            {product.category.name}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex items-center gap-2 mt-auto">
+          <div className="flex gap-0.5">
+            {Array.from({ length: 5 }).map((_, index) => {
+              const rating = product.ratingsAverage;
+              const fillValue = Math.max(0, Math.min(1, rating - index));
+              return (
+                <Star
+                  key={index}
+                  percentage={fillValue * 100}
+                  className="text-yellow-500 fill-yellow-400"
+                />
+              );
+            })}
+          </div>
+          <span className="text-sm font-semibold text-muted-foreground">
+            ({product.ratingsQuantity} reviews)
+          </span>
+        </CardContent>
+      </Link>
+      <AddToCartBtn productId={product._id} price={product.price} />
+    </Card>
+  );
 }

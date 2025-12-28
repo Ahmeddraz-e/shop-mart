@@ -44,7 +44,7 @@ export default function AddToCartBtn({ productId, price }: { productId: string, 
                 <button
                     onClick={() => addProductToCart(productId)}
                     disabled={isLoading}
-                    className={`bg-neutral-900 text-white px-4 py-2.5 md:px-8 md:py-3.5 rounded-full flex items-center justify-center gap-2 text-xs md:text-sm font-semibold tracking-wide flex-1 hover:bg-neutral-800 active:scale-95 transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl hover:shadow-neutral-900/20 whitespace-nowrap ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
+                    className={`bg-primary text-primary-foreground px-4 py-2.5 md:px-8 md:py-3.5 rounded-full flex items-center justify-center gap-2 text-xs md:text-sm font-semibold tracking-wide flex-1 hover:bg-primary/90 active:scale-95 transition-all duration-300 shadow-md md:shadow-lg hover:shadow-xl hover:shadow-primary/20 whitespace-nowrap ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
                 >
                     {isLoading ? (
                         <>
@@ -60,10 +60,10 @@ export default function AddToCartBtn({ productId, price }: { productId: string, 
                 </button>
                 <button
                     onClick={() => toggleWishlist(productId)}
-                    className="p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shrink-0"
+                    className="p-2 md:p-3 rounded-full hover:bg-muted transition-colors shrink-0"
                 >
                     <Heart
-                        className={`w-5 h-5 md:w-6 md:h-6 cursor-pointer transition-colors ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-gray-700'
+                        className={`w-5 h-5 md:w-6 md:h-6 cursor-pointer transition-colors ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-muted-foreground'
                             }`}
                     />
                 </button>

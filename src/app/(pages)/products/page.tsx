@@ -11,7 +11,7 @@ export default async function ProductsPage() {
     return (
         <main>
             <div className='container mx-auto py-8'>
-                <div className="grid grid-cols-12 gap-6 flex justify-center items-center">
+                <div className="grid grid-cols-12 gap-6 justify-center items-center">
                     {products.data.map((product: ProductI) => (
                         <div key={product.id} className='col-span-12 md:col-span-6 lg:col-span-3'>
                             <ProductCard product={product} />

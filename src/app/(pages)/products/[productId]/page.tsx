@@ -20,11 +20,7 @@ import {
 } from "@/components/ui/card"
 import Star from '@/components/ui/star'
 
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-} from "@/components/ui/carousel"
+import ProductCarousel from '@/components/product/product-carousel'
 import AddToCartBtn from '@/components/product/addtocartbtn'
 
 
@@ -67,24 +63,10 @@ export default async function ProductDetails({ params }: { params: Promise<Param
 
                 <Card className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-15 overflow-hidden">
                     <div className="col-span-1 flex items-center justify-center bg-gray-50 ">
-                        <Carousel className="w-full max-w-xs md:max-w-full">
-                            <CarouselContent>
-                                {product.images.map((img, index) => (
-                                    <CarouselItem key={index}>
-                                        <Image
-                                            width={1000}
-                                            height={1000}
-                                            src={img}
-                                            alt={product.title}
-                                            className='object-cover object-center h-[55vh] w-full'
-                                        />
-                                    </CarouselItem>
-                                ))}
-                            </CarouselContent>
-                        </Carousel>
+                        <ProductCarousel images={product.images} title={product.title} />
                     </div>
 
-                    <div className="col-span-1 md:col-span-2 flex flex-col flex justify-center items-center">
+                    <div className="col-span-1 md:col-span-2 flex flex-col justify-center items-center">
                         <div className="w-full">
                             <CardHeader>
                                 <h4 className='card-brand text-sm font-semibold text-gray-500'>{product.brand.name}</h4>

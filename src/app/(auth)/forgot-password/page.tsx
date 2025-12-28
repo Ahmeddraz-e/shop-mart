@@ -99,8 +99,8 @@ export default function ForgotPassword() {
     }
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gray-50">
-            <Card className="w-full max-w-md shadow-lg border-none bg-white/80 backdrop-blur-sm">
+        <div className="min-h-screen w-full flex items-center justify-center p-4 bg-background">
+            <Card className="w-full max-w-md shadow-lg border-none bg-card/80 backdrop-blur-sm">
                 <CardHeader className="space-y-1">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                         {step === 1 && <Mail className="w-6 h-6 text-primary" />}
@@ -128,10 +128,10 @@ export default function ForgotPassword() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    className="bg-white"
+                                    className="bg-card"
                                 />
                             </div>
-                            <Button type="submit" className="w-full bg-black text-white hover:bg-black/80" disabled={isLoading}>
+                            <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isLoading}>
                                 {isLoading ? (
                                     <>
                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -153,10 +153,10 @@ export default function ForgotPassword() {
                                     value={resetCode}
                                     onChange={(e) => setResetCode(e.target.value)}
                                     required
-                                    className="bg-white text-center text-lg tracking-widest"
+                                    className="bg-card text-center text-lg tracking-widest"
                                 />
                             </div>
-                            <Button type="submit" className="w-full bg-black text-white hover:bg-black/80" disabled={isLoading}>
+                            <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isLoading}>
                                 {isLoading ? (
                                     <>
                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -187,10 +187,10 @@ export default function ForgotPassword() {
                                     value={newPassword}
                                     onChange={(e) => setNewPassword(e.target.value)}
                                     required
-                                    className="bg-white"
+                                    className="bg-card"
                                 />
                             </div>
-                            <Button type="submit" className="w-full bg-black text-white hover:bg-black/80" disabled={isLoading}>
+                            <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isLoading}>
                                 {isLoading ? (
                                     <>
                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
