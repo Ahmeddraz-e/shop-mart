@@ -16,6 +16,7 @@ export default async function Home() {
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center text-white">

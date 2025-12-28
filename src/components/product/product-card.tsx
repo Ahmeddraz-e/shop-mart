@@ -26,6 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             src={product.imageCover}
             alt={product.title}
             className="object-cover h-[45vh] w-full"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           />
         </div>
         <CardHeader>
