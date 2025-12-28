@@ -4,10 +4,7 @@ import { getWishlist } from '@/services/wishlist.services'
 import { ProductI } from '@/interfaces/product'
 import { Loader2, Heart } from 'lucide-react'
 import Link from 'next/link'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import Image from 'next/image'
-import Star from '@/components/ui/star'
-import AddToCartBtn from '@/components/product/addtocartbtn'
+import ProductCard from '@/components/product/product-card'
 import { useWishlist } from '@/providers/wishlist-provider'
 import { Button } from '@/components/ui/button'
 
@@ -78,8 +75,8 @@ export default function WishlistPage() {
     if (products.length === 0) {
         return (
             <div className="min-h-[60vh] flex flex-col items-center justify-center gap-6 px-4 text-center">
-                <div className="bg-gray-100 p-6 rounded-full">
-                    <Heart className="w-12 h-12 text-gray-400" />
+                <div className="bg-muted p-6 rounded-full">
+                    <Heart className="w-12 h-12 text-muted-foreground" />
                 </div>
                 <div className="space-y-2">
                     <h2 className="text-2xl font-bold tracking-tight">Your wishlist is empty</h2>
@@ -110,40 +107,7 @@ export default function WishlistPage() {
                 <div className="grid grid-cols-12 gap-6">
                     {products.filter(p => wishlist.includes(p._id)).map((product) => (
                         <div key={product._id} className='col-span-12 md:col-span-6 lg:col-span-3'>
-                            <Card className="h-full flex flex-col overflow-hidden border-0 shadow-sm hover:shadow-lg transition-shadow bg-white">
-                                <Link href={`/products/${product._id}`} >
-                                    <div className="relative h-[45vh] w-full">
-                                        <Image
-                                            fill
-                                            src={product.imageCover}
-                                            alt={product.title}
-                                            className='object-cover h-[45vh] w-full'
-                                        />
-                                    </div>
-                                    <CardHeader>
-                                        <h4 className='card-brand text-sm font-semibold text-gray-500'>{product.brand.name}</h4>
-                                        <CardTitle className='text-xl font-bold line-clamp-1' title={product.title}>{product.title}</CardTitle>
-                                        <CardDescription className='text-sm font-semibold text-gray-500'>{product.category.name}</CardDescription>
-                                    </CardHeader>
-                                    <CardContent className='flex items-center gap-2 mt-auto'>
-                                        <div className="flex gap-0.5">
-                                            {Array.from({ length: 5 }).map((_, index) => {
-                                                const rating = product.ratingsAverage;
-                                                const fillValue = Math.max(0, Math.min(1, rating - index));
-                                                return (
-                                                    <Star
-                                                        key={index}
-                                                        percentage={fillValue * 100}
-                                                        className="text-yellow-500 fill-yellow-400"
-                                                    />
-                                                )
-                                            })}
-                                        </div>
-                                        <span className='text-sm font-semibold text-gray-600'>({product.ratingsQuantity} reviews)</span>
-                                    </CardContent>
-                                </Link>
-                                <AddToCartBtn productId={product._id} price={product.price} />
-                            </Card>
+                            <ProductCard product={product} />
                         </div>
                     ))}
                 </div>

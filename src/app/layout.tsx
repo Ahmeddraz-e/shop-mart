@@ -1,4 +1,3 @@
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/common/navbar";
@@ -7,8 +6,8 @@ import AuthProvider from "@/providers/auth-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { CartProvider } from "@/providers/cart-provider";
 import { Toaster } from "sonner";
-
 import { WishlistProvider } from "@/providers/wishlist-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +40,7 @@ export default function RootLayout({
               <CartProvider>
                 <Navbar />
                 {children}
+                <SpeedInsights />
                 <Toaster richColors />
                 <Footer />
               </CartProvider>

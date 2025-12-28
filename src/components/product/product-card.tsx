@@ -18,9 +18,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="h-full flex flex-col overflow-hidden border-0 shadow-md hover:shadow-xl transition-shadow">
+    <Card className="h-full flex flex-col overflow-hidden border border-border/50 bg-card shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
       <Link href={`/products/${product._id}`}>
-        <div className="relative h-[45vh] w-full bg-white flex items-center justify-center">
+        <div className="relative h-[45vh] w-full bg-transparent flex items-center justify-center">
           <Image
             fill
             src={product.imageCover}
